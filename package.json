@@ -1,0 +1,24 @@
+{
+  "name": "lang-box",
+  "version": "1.0.0",
+  "description": "💻 Update a pinned gist to contain languages of your recent commits in GitHub",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --experimental-modules --es-module-specifier-resolution=node src/index"
+  },
+  "dependencies": {
+    "node-fetch": "2.6.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inokawa/lang-box.git"
+  },
+  "keywords": [],
+  "author": "inokawa <stratoooo-taster@yahoo.co.jp> (https://github.com/inokawa/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/inokawa/lang-box/issues"
+  },
+  "homepage": "https://github.com/inokawa/lang-box#readme"
+}
