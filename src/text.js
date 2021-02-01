@@ -1,6 +1,5 @@
 const trimRightStr = (str, len) => {
-  // Ellipsis takes 3 positions, so the index of substring is 0 to total length - 3.
-  return str.length > len ? str.substring(0, len - 3) + "..." : str;
+  return str.length > len ? str.substring(0, len - 1) + "…" : str;
 };
 
 const formatNum = (n) => {
