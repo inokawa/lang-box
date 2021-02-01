@@ -97,6 +97,8 @@ const { GH_TOKEN, GIST_ID, USERNAME, DAYS } = process.env;
     );
 
     const langs = await runLinguist(files);
+    console.log(`\n`);
+    langs.forEach((l) => console.log(`${l.name}: ${l.count}files`));
 
     const content = createContent(langs);
     console.log(`\n`);

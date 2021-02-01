@@ -94,6 +94,7 @@ export const runLinguist = async (files) => {
           (acc, p) => acc + (pathFileMap[p]?.deletions ?? 0),
           0
         ),
+        count: v.paths.length,
       });
       return acc;
     }, [])
