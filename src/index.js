@@ -55,6 +55,7 @@ const { GH_TOKEN, GIST_ID, USERNAME, DAYS } = process.env;
             await Promise.allSettled(
               recentPushEvents.flatMap(({ repo, payload }) =>
                 payload.commits
+                  // Ignore duplicated commits
                   .filter((c) => c.distinct === true)
                   .map((c) => api.fetch(`/repos/${repo.name}/commits/${c.sha}`))
               )
@@ -76,25 +77,28 @@ const { GH_TOKEN, GIST_ID, USERNAME, DAYS } = process.env;
     console.log(`\n`);
 
     // https://docs.github.com/en/rest/reference/repos#compare-two-commits
-    const files = commits.flatMap((res) =>
-      res.files.map(
-        ({
-          filename,
-          additions,
-          deletions,
-          changes,
-          status, // added, removed, modified, renamed
-          patch,
-        }) => ({
-          path: filename,
-          additions,
-          deletions,
-          changes,
-          status,
-          patch,
-        })
-      )
-    );
+    const files = commits
+      // Ignore merge commits
+      .filter((c) => c.parents.length <= 1)
+      .flatMap((c) =>
+        c.files.map(
+          ({
+            filename,
+            additions,
+            deletions,
+            changes,
+            status, // added, removed, modified, renamed
+            patch,
+          }) => ({
+            path: filename,
+            additions,
+            deletions,
+            changes,
+            status,
+            patch,
+          })
+        )
+      );
 
     const langs = await runLinguist(files);
     console.log(`\n`);
