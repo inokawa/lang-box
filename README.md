@@ -24,7 +24,7 @@ This project gets your recent commits from your activities fetched from GitHub A
 
 ### Project setup
 
-1. [Create a template repository](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) by clicking [here](https://github.com/inokawa/lang-box/generate), or you can click the **Use this template** button on this project.
+1. Fork this repo, or [create a repository from template](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) by clicking [here](https://github.com/inokawa/lang-box/generate) or the **Use this template** button on this project.
    - If you added `repo` scope above, it's recommended to create private repository.
 1. Open the "Actions" tab of your fork and click the "enable" button.
 1. Edit the [environment variable](https://github.com/inokawa/lang-box/blob/master/.github/workflows/run.yml#L32-L33) in `.github/workflows/run.yml`:
