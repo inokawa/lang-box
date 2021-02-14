@@ -67,7 +67,8 @@ export const runLinguist = async (files) => {
               .map((line) => line.substring(1))
               .join("\n")
           : d.changes
-          ? createDummyText(d.changes)
+          ? // If the diff is too large, GitHub API do not return patch so calc from changed lines but it's not precise
+            createDummyText(d.changes)
           : ""
       )
     ),
