@@ -36,7 +36,7 @@ const generateBarChart = (percent, size) => {
 
 export const createContent = (languages) => {
   const lines = [];
-  for (let i = 0; i < Math.min(languages.length, 5); i++) {
+  for (let i = 0; i < languages.length; i++) {
     const data = languages[i];
     const { name, percent, additions, deletions } = data;
 
