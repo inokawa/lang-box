@@ -33,7 +33,7 @@ const parseOutput = (text) => {
       parsingLang = ml.language;
       return;
     }
-    map[parsingLang].paths.push(line);
+    map[parsingLang]?.paths.push(line);
   });
   return map;
 };
