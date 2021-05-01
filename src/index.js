@@ -45,9 +45,7 @@ const { GH_TOKEN, GIST_ID, USERNAME, DAYS } = process.env;
         const recentPushEvents = pushEvents.filter(
           ({ created_at }) => new Date(created_at) > fromDate
         );
-        const isEnd = pushEvents.some(
-          ({ created_at }) => !(new Date(created_at) > fromDate)
-        );
+        const isEnd = recentPushEvents.length < pushEvents.length;
         console.log(`${recentPushEvents.length} events fetched.`);
 
         commits.push(
