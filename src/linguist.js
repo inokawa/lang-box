@@ -19,7 +19,7 @@ const parseOutput = (text) => {
   const map = {};
   let parsingLang = "";
   text.split("\n").forEach((line) => {
-    const mv = line.match(/^(?<percent>[\d.]+)%\s+(?<language>\w+)/)?.groups;
+    const mv = line.match(/^(?<percent>[\d.]+)%\s+[\d.]+\s(?<language>\w+)/)?.groups;
     if (mv) {
       map[mv.language] = { percent: mv.percent, paths: [] };
       return;
