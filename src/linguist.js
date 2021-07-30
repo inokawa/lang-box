@@ -15,29 +15,6 @@ const run = (command, options) =>
     });
   });
 
-const parseOutput = (text) => {
-  const map = {};
-  let parsingLang = "";
-  text.split("\n").forEach((line) => {
-    const mv = line.match(/^(?<percent>[\d.]+)%\s+(?<language>\w+)/)?.groups;
-    if (mv) {
-      map[mv.language] = { percent: mv.percent, paths: [] };
-      return;
-    }
-    if (line.match(/^$/)) {
-      parsingLang = "";
-      return;
-    }
-    const ml = line.match(/^(?<language>\w+):/)?.groups;
-    if (ml) {
-      parsingLang = ml.language;
-      return;
-    }
-    map[parsingLang]?.paths.push(line);
-  });
-  return map;
-};
-
 const createDummyText = (count) => {
   let text = "";
   for (let i = 0; i < count; i++) {
@@ -79,23 +56,23 @@ export const runLinguist = async (files) => {
   ]);
   await run(`git add . && git commit -m "dummy"`);
 
-  const stdout = await run("github-linguist --breakdown");
-  const res = parseOutput(stdout);
+  const stdout = await run("github-linguist --breakdown --json");
+  const res = JSON.parse(stdout);
 
   const langs = Object.entries({ ...res })
     .reduce((acc, [name, v]) => {
       acc.push({
         name,
-        percent: Number(v.percent),
-        additions: v.paths.reduce(
+        percent: +v.percentage,
+        additions: v.files.reduce(
           (acc, p) => acc + (pathFileMap[p]?.additions ?? 0),
           0
         ),
-        deletions: v.paths.reduce(
+        deletions: v.files.reduce(
           (acc, p) => acc + (pathFileMap[p]?.deletions ?? 0),
           0
         ),
-        count: v.paths.length,
+        count: v.files.length,
       });
       return acc;
     }, [])
