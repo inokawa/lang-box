@@ -1,5 +1,3 @@
-import fetch from "node-fetch";
-
 export class ApiClient {
   constructor(token) {
     this.token = token;

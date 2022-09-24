@@ -7,9 +7,7 @@
   "scripts": {
     "start": "node --experimental-modules --es-module-specifier-resolution=node src/index"
   },
-  "dependencies": {
-    "node-fetch": "3.2.0"
-  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/inokawa/lang-box.git"
