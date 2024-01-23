@@ -27,11 +27,9 @@ This project gets your recent commits from your activities fetched from GitHub A
 1. Fork this repo, or [create a repository from template](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) by clicking [here](https://github.com/inokawa/lang-box/generate) or the **Use this template** button on this project.
    - If you added `repo` scope above, it's recommended to create private repository.
 1. Open the "Actions" tab of your fork and click the "enable" button.
-1. Edit the [environment variable](https://github.com/inokawa/lang-box/blob/master/.github/workflows/run.yml#L32-L33) in `.github/workflows/run.yml`:
-
-   - **GIST_ID:** The ID portion from your gist url: `https://gist.github.com/inokawa/`**`64dacee1c6c93cdbcf48548f6598f823`**.
 
 1. Go to the repo **Settings > Secrets**
 1. Add the following environment variables:
    - **GH_TOKEN:** The GitHub token generated above.
+   - **GIST_ID:** The ID portion from your gist url: `https://gist.github.com/inokawa/`**`64dacee1c6c93cdbcf48548f6598f823`**.
 1. [Pin the newly created Gist](https://help.github.com/en/github/setting-up-and-managing-your-github-profile/pinning-items-to-your-profile)
